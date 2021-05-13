@@ -1,0 +1,18 @@
+<h2>My Boys</h2>
+<ul class="players">
+  <li *ngFor="let player of players"
+    [class.selected]="player === selectedPlayer"
+    (click)="onSelect(player)">
+    <span class="badge">{{player.sumName}}</span>
+  </li>
+</ul>
+
+<div *ngIf="selectedPlayer">
+
+  <h2>{{selectedPlayer.sumName}} Details</h2>
+  <div>
+    <label for="highMastChamp">Most played champion: </label>
+    <input id="highMastChamp" [(ngModel)]="selectedPlayer.highMastChamp" placeholder="highMastChamp">
+  </div>
+
+</div>
