@@ -1,6 +1,7 @@
-<h2>Best Players</h2>
+<h2>Top Players</h2>
 <div class="players-menu">
-  <a *ngFor="let player of players">
+  <a *ngFor="let player of players"
+    routerLink="/detail/{{player.sumName}}">
     {{player.sumName}}
   </a>
 </div>

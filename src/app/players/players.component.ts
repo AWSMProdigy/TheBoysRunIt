@@ -11,17 +11,10 @@ import { PlayerService } from "../player.service"
 })
 export class PlayersComponent implements OnInit {
   players: Player[] = [];
-  selectedPlayer?: Player;
-  constructor(private playerService: PlayerService, private messageService: MessageService) {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
     this.getPlayers();
-  }
-
-  onSelect(player: Player): void{
-    this.selectedPlayer = player;
-    this.messageService.clear();
-    this.messageService.add(`PlayersComponent: Selected player summoner: ${player.sumName}`);
   }
 
   getPlayers(): void {

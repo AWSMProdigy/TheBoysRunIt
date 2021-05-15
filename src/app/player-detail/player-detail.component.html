@@ -1,0 +1,11 @@
+<button (click)="goBack()">Go Back</button>
+<div *ngIf="player">
+
+    <h2>{{player.sumName}} Details</h2>
+    <div>
+      <label for="highMastChamp">Most played champion: </label>
+      <input id="highMastChamp" [(ngModel)]="player.highMastChamp" placeholder="highMastChamp">
+    </div>
+  
+</div>
+
