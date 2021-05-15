@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../message.service';
 import { Player } from '../player';
-import { PLAYERS } from '../TheBoys';
+import { PlayerService } from "../player.service"
 
 
 @Component({
@@ -9,15 +10,22 @@ import { PLAYERS } from '../TheBoys';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
-  players = PLAYERS;
+  players: Player[] = [];
   selectedPlayer?: Player;
-  constructor() { }
+  constructor(private playerService: PlayerService, private messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.getPlayers();
   }
 
   onSelect(player: Player): void{
     this.selectedPlayer = player;
+    this.messageService.clear();
+    this.messageService.add(`PlayersComponent: Selected player summoner: ${player.sumName}`);
+  }
+
+  getPlayers(): void {
+    this.playerService.getPlayers().subscribe(players => this.players = players);
   }
 
 }
